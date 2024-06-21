@@ -830,7 +830,7 @@ components:
         usedFromYear:
           type: string
           format: string
-          example: 2000
+          example: "2000"
 
         usedUntilMonth:
           type: string
@@ -841,7 +841,7 @@ components:
         usedUntilYear:
           type: string
           format: string
-          example: 2020
+          example: "2020"
 
     currentAddress:
       type: object
@@ -885,7 +885,7 @@ components:
         yearMovedIn:
           type: string
           format: string
-          example: 2023
+          example: "2023"
 
         monthLivedUntil:
           type: string
@@ -896,7 +896,7 @@ components:
         yearLivedUntil:
           type: string
           format: string
-          example: 2024
+          example: "2024"
 
     previousAddress:
       type: object
@@ -935,12 +935,12 @@ components:
           type: string
           format: string
           pattern: '^\d{2}$'
-          example: 10
+          example: "10"
 
         yearMovedIn:
           type: string
           format: string
-          example: 2001
+          example: "2001"
 
         monthLivedUntil:
           type: string
@@ -951,7 +951,7 @@ components:
         yearLivedUntil:
           type: string
           format: string
-          example: 2023
+          example: "2023"
 
     passport:
       type: object
@@ -963,7 +963,7 @@ components:
         number:
           type: string
           format: string
-          example: 123456789
+          example: "123456789"
 
         issueCountry:
           type: string
@@ -990,7 +990,7 @@ components:
         number:
           type: string
           format: string
-          example: 12345678
+          example: "12345678"
 
         issueCountry:
           type: string
@@ -1208,7 +1208,7 @@ components:
     getTransactions:
       type: object
       properties:
-        test:
+        changeme:
           type: string
 
     Pet:
