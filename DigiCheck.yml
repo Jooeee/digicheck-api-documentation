@@ -5,7 +5,7 @@ info:
   termsOfService: https://unitecompliance.co.uk/api-terms-and-conditions
   contact:
     email: technical@digicheck.io
-    url: "https://unitecompliance.co.uk/apis"
+    url: https://unitecompliance.co.uk/apis
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
