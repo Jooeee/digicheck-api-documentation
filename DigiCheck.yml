@@ -335,7 +335,7 @@ paths:
       tags:
         - connection
       summary: Test connection to the API
-      description: Make a GET request to this endpoint to make sure your connection is working correctly.
+      description: Send a GET request to this endpoint to verify that your connection to the server is functioning properly.
       operationId: connectionTest
       responses:
         "200":
