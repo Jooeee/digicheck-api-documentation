@@ -780,7 +780,7 @@ components:
         usedUntilYear:
           type: string
           format: string
-          example: 2020
+          example: "2020"
 
     isNationalityChanged:
       type: object
