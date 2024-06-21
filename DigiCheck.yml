@@ -1,0 +1,1279 @@
+openapi: 3.0.2
+info:
+  title: DigiCheck®
+  description: DigiCheck API Description goes here
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: technical@digicheck.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Check out our other APIs here
+  url: http://swagger.io
+servers:
+  - url: https://dev.digicheck.io/api
+tags:
+  - name: connection
+    description: Connection Testing
+    externalDocs:
+      description: Find out more about our store
+      url: http://swagger.io
+
+  - name: application
+    description: Everything related to applications
+    externalDocs:
+      description: Find out more
+      url: http://swagger.io
+
+  - name: result
+    description: Everything related to results
+
+  - name: billing
+    description: Everything releated to billing
+
+paths:
+  /application/dbs/submit:
+    post:
+      tags:
+        - application
+      summary: Submit a standard or enhanced DBS application
+      description: Submit a standard or enchanced DBS application
+      operationId: submitDbs
+      requestBody:
+        description: Submit a standard or enchanced DBS application
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DBS"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/DBS"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/DBS"
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/dbsSuccess"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/DBS"
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Pet not found
+        "422":
+          description: Validation exception
+      security:
+        - api-key: []
+
+  /application/basic-ds/submit:
+    post:
+      tags:
+        - application
+      summary: Submit a basic Disclosure Scotland application
+      description: Update an existing pet by Id
+      operationId: submitBasicDs
+      requestBody:
+        description: Update an existent pet in the store
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Pet"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/Pet"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Pet"
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Pet"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Pet"
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Pet not found
+        "422":
+          description: Validation exception
+      security:
+        - api-key: []
+
+  /application/basic-dbs/submit:
+    post:
+      tags:
+        - application
+      summary: Submit a basic DBS application
+      description: Update an existing pet by Id
+      operationId: submitBasicDbs
+      requestBody:
+        description: Update an existent pet in the store
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Pet"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/Pet"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Pet"
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Pet"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Pet"
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Pet not found
+        "422":
+          description: Validation exception
+      security:
+        - api-key: []
+
+  /application/comment/{applicationReference}:
+    post:
+      tags:
+        - application
+      summary: Add a comment to an application
+      description: This can only be done by the logged in user.
+      operationId: updateApplicationComment
+      parameters:
+        - name: applicationReference
+          in: path
+          description: The application reference to add the comment to
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Add a comment to an application
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/postComment"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/postComment"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/postComment"
+
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/response200"
+              example:
+                status: success
+                msg: Your comment has been added.
+
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/response200"
+              example:
+                status: success
+                msg: Your comment has been added.
+
+      security:
+        - api-key: []
+
+    get:
+      tags:
+        - application
+      summary: Get the comments of an application by application reference
+      description: Write a description Dylan
+      operationId: getApplicationComments
+      parameters:
+        - name: applicationReference
+          in: path
+          description: The application reference to get the comments from
+          required: true
+          explode: false
+          schema:
+            type: string
+
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/getComments"
+
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/getComments"
+        "400":
+          description: Invalid status value
+      security:
+        - api-key: []
+
+  /application/status/{applicationReference}:
+    get:
+      tags:
+        - application
+      summary: Get the status of an application by application reference
+      description: needs description
+      operationId: getStatus
+      parameters:
+        - name: applicationReference
+          in: path
+          description: The application reference to get status of
+          required: true
+          schema:
+            type: string
+
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/getStatus"
+
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/getStatus"
+        "400":
+          description: Invalid status value
+      security:
+        - api-key: []
+
+  /application/audit-log/{applicationReference}:
+    get:
+      tags:
+        - application
+      summary: Get the audit log of an application by application reference
+      description: description
+      operationId: getAuditLog
+      parameters:
+        - name: applicationReference
+          in: path
+          description: The application reference to get the audit log from
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/getAuditLog"
+                example:
+                  action: Application Tracked
+                  applicationStatus: In Progress
+                  User:
+                    name: Joe Bloggs
+                  date_time: 2020/12/25 10:10:10 AM
+
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/getAuditLog"
+                example:
+                  action: Application Tracked
+                  applicationStatus: In Progress
+                  User:
+                    name: Joe Bloggs
+                  date_time: 2020/12/25 10:10:10 AM
+
+        "400":
+          description: Invalid status value
+      security:
+        - api-key: []
+
+  /connection/test:
+    get:
+      tags:
+        - connection
+      summary: Test connection to the API
+      description: Make a get request to this endpoint to make sure your connection is working correctly.
+      operationId: connectionTest
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/connectionTestResult"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/connectionTestResult"
+        "400":
+          description: Invalid status value
+      security:
+        - api-key: []
+
+  /result/{applicationReference}:
+    get:
+      tags:
+        - result
+      summary: Get results by application reference
+      description: Description
+      operationId: getResult
+      parameters:
+        - name: applicationReference
+          in: path
+          description: The application reference to get the result of
+          required: true
+          schema:
+            type: string
+
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/getResult"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/getResult"
+        "400":
+          description: Invalid tag value
+      security:
+        - api-key: []
+
+  /result/report/{applicationReference}:
+    get:
+      tags:
+        - result
+      summary: Get an appliction PDF report by application reference
+      description: Returns a URL to download a PDF report
+      operationId: getResultPDF
+      parameters:
+        - name: applicationReference
+          in: path
+          description: The application reference to get the result PDF of
+          required: true
+          schema:
+            type: string
+
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/getResultPDF"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/getResultPDF"
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Pet not found
+      security:
+        - api-key: []
+
+  /billing/transactions/{MM-YYYY}:
+    get:
+      tags:
+        - billing
+      summary: Get all the transactions in a specified month
+      description: Returns a URL to download a PDF report
+      operationId: getResultPDF
+      parameters:
+        - name: MM-YYYY
+          in: path
+          description: The application reference to get the result PDF of
+          required: true
+          schema:
+            type: string
+
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/getResultPDF"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/getResultPDF"
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Pet not found
+      security:
+        - api-key: []
+
+  /billing/invoice/{MM-YYYY}:
+    get:
+      tags:
+        - billing
+      summary: Get the invoice total and all the transactions paid by invoice in a specified month
+      description: Returns the invoice amount, currency and all the transactions in the specified month.
+      operationId: getInvoice
+      parameters:
+        - name: MM-YYYY
+          in: path
+          description: The application reference to get the result PDF of
+          required: true
+          schema:
+            type: string
+
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/getResultPDF"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/getResultPDF"
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Pet not found
+      security:
+        - api-key: []
+
+  /billing/transaction/{reference}:
+    get:
+      tags:
+        - billing
+      summary: Get the details of a transaction by reference
+      description: Returns the details of a specified transaction.
+      operationId: getTransactions
+      parameters:
+        - name: applicationReference
+          in: path
+          description: The application reference to get the result PDF of
+          required: true
+          schema:
+            type: string
+
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/getResultPDF"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/getResultPDF"
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Pet not found
+      security:
+        - api-key: []
+
+  /billing/wallet:
+    get:
+      tags:
+        - billing
+      summary: Get the balance of the wallet
+      description: Returns the balance in the wallet
+      operationId: getWallet
+
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/getResultPDF"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/getResultPDF"
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Pet not found
+      security:
+        - api-key: []
+
+components:
+  schemas:
+    DBS:
+      type: object
+      properties:
+        encryption:
+          type: boolean
+          example: false
+        title:
+          type: string
+          enum:
+            - BARON
+            - BARONESS
+            - BRIGADIER
+            - CANON
+            - CAPTAIN
+            - DR
+            - DUCHESS
+            - DUKE
+            - ESQ
+            - FATHER
+            - HON
+            - INSPECTOR
+            - LADY
+            - LORD
+            - LT COL
+            - MAJOR
+            - MISS
+            - MOST REVER
+            - MR
+            - MRS
+            - MS
+            - PASTOR
+            - PROFESSOR
+            - RABBI
+            - REV DR
+            - REVEREND
+            - RT REVEREN
+            - SIR
+            - SISTER
+            - SQUADRON L
+            - WG CDR
+          format: string
+
+        products:
+          type: array
+          items:
+            enum:
+              - enhanced-dbs-check
+              - standard-dbs-check
+            example: enhanced-dbs-check
+
+        volunteer:
+          type: boolean
+          format: boolean
+          example: false
+
+        adultFirstCheck:
+          type: boolean
+          format: boolean
+          example: false
+
+        updateService:
+          type: boolean
+          format: boolean
+          example: false
+
+        forename:
+          type: string
+          format: string
+          example: Joe
+          minLength: 2
+          maxLength: 60
+
+        surname:
+          type: string
+          format: string
+          example: Blogs
+          minLength: 2
+          maxLength: 60
+
+        middleNames:
+          type: string
+          format: array
+          example:
+            - middlenameone
+            - middlenametwo
+
+        dob:
+          type: string
+          format: date
+          example: 01-01-2000
+
+        gender:
+          type: string
+          format: string
+          enum:
+            - male
+            - female
+          example: male
+
+        birthCountry:
+          type: string
+          format: string
+          example: GB
+
+        birthTown:
+          type: string
+          format: string
+          example: Fake Town
+
+        birthNationality:
+          type: string
+          format: string
+          example: GB
+
+        birthCounty:
+          type: string
+          format: string
+          example: Fake County
+
+        email:
+          type: string
+          format: email
+
+        niNumber:
+          type: string
+          format: string
+          example: AA111111B
+
+        isSurnameChanged:
+          $ref: "#/components/schemas/isSurnameChanged"
+
+        isNationalityChanged:
+          $ref: "#/components/schemas/isNationalityChanged"
+
+        hasOtherNames:
+          $ref: "#/components/schemas/hasOtherNames"
+
+        currentAddress:
+          $ref: "#/components/schemas/currentAddress"
+
+        previousAddress:
+          type: array
+          items:
+            $ref: "#/components/schemas/previousAddress"
+
+        passport:
+          $ref: "#/components/schemas/passport"
+
+        drivingLicence:
+          $ref: "#/components/schemas/drivingLicence"
+
+        unspentConvictions:
+          type: boolean
+          example: false
+
+        employment:
+          type: object
+          properties:
+            positionAppliedFor:
+              type: string
+              minLength: 1
+              maxLength: 60
+              pattern: "^([A-Z0-9\\(\\)\\-\\/\\'&]+)|([A-Z0-9\\(\\)\\-\\/\\'&][A-Z 0-9\\(\\)\\-\\/\\'&]*[A-Z0-9\\(\\)\\-\\/\\'&])$"
+              example: Teacher
+
+            workforceType:
+              type: string
+              format: string
+              enum:
+                - child-and-adult
+                - child
+                - adult
+                - other
+              example: child-and-adult
+
+            employerName:
+              type: string
+              format: string
+              example: Fake Company
+
+        screening:
+          $ref: "#/components/schemas/screening"
+
+        manualVerification:
+          $ref: "#/components/schemas/manualVerification"
+
+        client:
+          type: object
+          properties:
+            email:
+              type: string
+              format: email
+              example: joe@unitecompliance.co.uk
+
+            firstName:
+              type: string
+              example: Joe
+
+            lastName:
+              type: string
+              example: Bloggs
+
+        requestPayment:
+          type: boolean
+          example: false
+
+      required:
+        - title
+        - products
+        - volunteer
+        - adultFirstCheck
+        - updateService
+        - forename
+        - surname
+        - dob
+        - gender
+        - birthCountry
+        - birthTown
+        - email
+        - isSurnameChanged
+        - isNationalityChanged
+        - hasOtherNames
+        - currentAddress
+        - unspentConvictions
+        - employment
+        - screening
+        - manualVerification
+        - client
+
+      xml:
+        name: submitDBS
+
+    isSurnameChanged:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+
+        birthSurname:
+          type: string
+          format: string
+          example: Jones
+
+        birthForename:
+          type: string
+          format: string
+          example: Joe
+
+        usedUntilMonth:
+          type: string
+          pattern: '^\d{2}$'
+          example: "05"
+
+        usedUntilYear:
+          type: string
+          format: string
+          example: 2020
+
+    isNationalityChanged:
+      type: object
+      properties:
+        status:
+          type: boolean
+
+        newNationality:
+          type: string
+          format: string
+          example: US
+
+    hasOtherNames:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+
+        names:
+          type: array
+          items:
+            $ref: "#/components/schemas/names"
+
+    names:
+      type: object
+      properties:
+        type:
+          type: string
+          format: string
+          enum:
+            - forename
+            - surname
+          example: forename
+
+        name:
+          type: string
+          format: string
+          example: Jeff
+
+        usedFromMonth:
+          type: string
+          format: string
+          pattern: '^\d{2}$'
+          example: "01"
+
+        usedFromYear:
+          type: string
+          format: string
+          example: 2000
+
+        usedUntilMonth:
+          type: string
+          format: string
+          pattern: '^\d{2}$'
+          example: "12"
+
+        usedUntilYear:
+          type: string
+          format: string
+          example: 2020
+
+    currentAddress:
+      type: object
+      properties:
+        line1:
+          type: string
+          format: string
+          example: 30 Fake Block
+
+        line2:
+          type: string
+          format: string
+          example: Fake Street
+
+        town:
+          type: string
+          format: string
+          example: Fake Town
+
+        country:
+          type: string
+          format: string
+          example: "GB"
+
+        county:
+          type: string
+          format: string
+          example: Fake County
+
+        postCode:
+          type: string
+          format: string
+          example: DA101BB
+
+        monthMovedIn:
+          type: string
+          format: string
+          pattern: '^\d{2}$'
+          example: "06"
+
+        yearMovedIn:
+          type: string
+          format: string
+          example: 2023
+
+        monthLivedUntil:
+          type: string
+          format: string
+          pattern: '^\d{2}$'
+          example: "06"
+
+        yearLivedUntil:
+          type: string
+          format: string
+          example: 2024
+
+    previousAddress:
+      type: object
+      properties:
+        line1:
+          type: string
+          format: string
+          example: 32 Fake Block
+
+        line2:
+          type: string
+          format: string
+          example: Fake Road
+
+        town:
+          type: string
+          format: string
+          example: Fake Town
+
+        country:
+          type: string
+          format: string
+          example: "GB"
+
+        county:
+          type: string
+          format: string
+          example: Fake County
+
+        postCode:
+          type: string
+          format: string
+          example: DA101BB
+
+        monthMovedIn:
+          type: string
+          format: string
+          pattern: '^\d{2}$'
+          example: 10
+
+        yearMovedIn:
+          type: string
+          format: string
+          example: 2001
+
+        monthLivedUntil:
+          type: string
+          format: string
+          pattern: '^\d{2}$'
+          example: "06"
+
+        yearLivedUntil:
+          type: string
+          format: string
+          example: 2023
+
+    passport:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+
+        number:
+          type: string
+          format: string
+          example: 123456789
+
+        issueCountry:
+          type: string
+          format: string
+          example: GB
+
+        dateOfIssue:
+          type: string
+          format: date
+          example: 01-12-2024
+
+        dob:
+          type: string
+          format: date
+          example: 01-01-2000
+
+    drivingLicence:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+
+        number:
+          type: string
+          format: string
+          example: 12345678
+
+        issueCountry:
+          type: string
+          format: string
+          example: GB
+
+        dateOfIssue:
+          type: string
+          format: date
+          example: 01-12-2024
+
+        type:
+          type: string
+          enum:
+            - photo
+            - paper
+          example: photo
+
+    screening:
+      type: object
+      properties:
+        workingWithAdults:
+          type: boolean
+          example: true
+
+        workingWithChildren:
+          type: boolean
+          example: true
+
+        workingAtApplicantAddress:
+          type: boolean
+          example: false
+
+    manualVerification:
+      type: object
+      properties:
+        route:
+          type: integer
+          format: int32
+          example: 1
+
+        documents:
+          type: array
+          minItems: 3
+          items:
+            $ref: "#/components/schemas/documents"
+          example:
+            - type: "primary"
+              document: "Passport"
+            - type: "supporting"
+              document: "Biometric Residence Permit"
+            - type: "supporting"
+              document: "Adoption Certificate"
+
+        checkedApplicantId:
+          type: boolean
+
+        checkedApplicantAddress:
+          type: boolean
+
+        checkedApplicantDOB:
+          type: boolean
+
+    documents:
+      type: object
+      properties:
+        type:
+          type: string
+
+        document:
+          type: string
+
+    connectionTestResult:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+
+        msg:
+          type: string
+          example: Your connection is successful.
+
+    dbsSuccess:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+
+        msg:
+          type: string
+          example: Your application has been submitted
+
+        reference:
+          type: string
+          example: XX000000000
+
+    postComment:
+      type: object
+      properties:
+        comment:
+          type: string
+          example: Test Comment
+
+        name:
+          type: string
+          example: Joe Bloggs
+
+    getComments:
+      type: object
+      properties:
+        comment:
+          type: string
+          example: Test Comment
+
+        user:
+          type: object
+          properties:
+            name:
+              type: string
+              example: Joe Bloggs
+
+        date_time:
+          type: string
+          example: 2020/12/25 10:10:10 AM
+      xml:
+        name: commentResponse
+
+    getStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          example: In Progress
+
+    getAuditLog:
+      type: object
+      properties:
+        action:
+          type: string
+        applicationStatus:
+          type: string
+        user:
+          type: object
+          properties:
+            name:
+              type: string
+        date_time:
+          type: string
+
+    getResult:
+      type: object
+      properties:
+        applicationFormReference:
+          type: string
+        rbApplicationReference:
+          type: string
+        disclosureStatus:
+          type: string
+        disclosureType:
+          type: string
+        disclosureNumber:
+          type: string
+        disclosureIssueDate:
+          type: string
+        applicantSurname:
+          type: string
+        applicantForename:
+          type: string
+        applicantDob:
+          type: string
+        applicantGender:
+          type: string
+          enum:
+            - male
+            - female
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        addressTown:
+          type: string
+        addressCounty:
+          type: string
+        postcode:
+          type: string
+        countryCode:
+          type: string
+        otherNames:
+          type: object
+          properties:
+            id:
+              type: string
+            other_name:
+              type: string
+            rb_application_reference:
+              type: string
+            result_id:
+              type: string
+
+    getResultPDF:
+      type: object
+      properties:
+        downloadURL:
+          type: string
+
+        note:
+          type: array
+          items:
+            example:
+              - The download link will expire in 60 minutes.
+              - After downloading the report, the link will expire.
+
+    getTransactions:
+      type: object
+      properties:
+
+    Pet:
+      required:
+        - name
+        - photoUrls
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        category:
+          $ref: "#/components/schemas/documents"
+        photoUrls:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            type: string
+            xml:
+              name: photoUrl
+        tags:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            $ref: "#/components/schemas/documents"
+        status:
+          type: string
+          description: pet status in the store
+          enum:
+            - available
+            - pending
+            - sold
+      xml:
+        name: pet
+    response200:
+      type: object
+      properties:
+        status:
+          type: string
+        msg:
+          type: string
+      xml:
+        name: "response"
+  requestBodies:
+    Pet:
+      description: Pet object that needs to be added to the store
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Pet"
+        application/xml:
+          schema:
+            $ref: "#/components/schemas/Pet"
+    UserArray:
+      description: List of user object
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/documents"
+  securitySchemes:
+    api-key:
+      type: apiKey
+      name: api-key
+      in: header
