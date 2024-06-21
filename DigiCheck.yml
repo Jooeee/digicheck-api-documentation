@@ -637,8 +637,8 @@ components:
 
         dob:
           type: string
-          format: date
-          example: 01-01-2000
+          format: dd-mm-yyyy
+          example: 30-01-2000
 
         gender:
           type: string
