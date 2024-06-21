@@ -474,7 +474,7 @@ paths:
       parameters:
         - name: applicationReference
           in: path
-          description: The application reference to get the result PDF of
+          description: The application reference details of
           required: true
           schema:
             type: string
