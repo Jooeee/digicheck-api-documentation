@@ -1208,6 +1208,8 @@ components:
     getTransactions:
       type: object
       properties:
+        test:
+          type: string
 
     Pet:
       required:
