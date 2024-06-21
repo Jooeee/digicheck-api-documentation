@@ -87,7 +87,11 @@ paths:
         "404":
           description: Not found
         "422":
-          description: Validation exception
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/dbsSuccess"
       security:
         - api-key: []
 
@@ -1253,6 +1257,19 @@ components:
         msg:
           type: string
           example: Unauthorized
+
+    response422:
+      type: object
+      properties:
+        status:
+          type: string
+          example: fail
+        msg:
+          type: string
+          example: Fail reason
+        code:
+          type: string
+          example: "422"
 
   requestBodies:
     UserArray:
