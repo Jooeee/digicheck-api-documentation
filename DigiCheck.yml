@@ -20,7 +20,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  version: 1.0.11
+  version: 1.0.0
   x-logo:
     url: https://digicheck.io/storage/temp/digi-check/icon.png
 externalDocs:
@@ -347,8 +347,12 @@ paths:
             application/xml:
               schema:
                 $ref: "#/components/schemas/connectionTestResult"
-        "400":
-          description: Invalid status value
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/response401"
       security:
         - api-key: []
 
@@ -1238,6 +1242,18 @@ components:
           type: string
       xml:
         name: "response"
+
+    response401:
+      type: object
+      properties:
+        status:
+          type: string
+          example: fail
+
+        msg:
+          type: string
+          example: Unauthorized
+
   requestBodies:
     UserArray:
       description: List of user object
