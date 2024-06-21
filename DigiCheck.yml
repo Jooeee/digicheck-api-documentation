@@ -335,11 +335,11 @@ paths:
       tags:
         - connection
       summary: Test connection to the API
-      description: Make a get request to this endpoint to make sure your connection is working correctly.
+      description: Make a **Get** request to this endpoint to make sure your connection is working correctly.
       operationId: connectionTest
       responses:
         "200":
-          description: successful operation
+          description: Successful Operation
           content:
             application/json:
               schema:
