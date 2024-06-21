@@ -406,7 +406,7 @@ paths:
         - billing
       summary: Get all the transactions in a specified month
       description: Returns a URL to download a PDF report
-      operationId: getResultPDF
+      operationId: getTransactions
       parameters:
         - name: MM-YYYY
           in: path
@@ -464,13 +464,13 @@ paths:
       security:
         - api-key: []
 
-  /billing/transaction/{reference}:
+  /billing/transaction/{applicationReference}:
     get:
       tags:
         - billing
       summary: Get the details of a transaction by reference
       description: Returns the details of a specified transaction.
-      operationId: getTransactions
+      operationId: getTransaction
       parameters:
         - name: applicationReference
           in: path
