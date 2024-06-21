@@ -1,9 +1,20 @@
 openapi: 3.0.2
 info:
   title: DigiCheck®
-  description: DigiCheck API Description goes here
+  description: |
+    Description of Digicheck® RESTful API.
+
+    Current limitations:
+      * Example 1
+      * Example 2
+      * Example 3
+
+    **Warning:** Write what you like here.
+
+    Last update: 2024-06-21
   termsOfService: https://unitecompliance.co.uk/api-terms-and-conditions
   contact:
+    name: DigiCheck
     email: technical@digicheck.io
     url: https://unitecompliance.co.uk/apis
   license:
@@ -20,6 +31,7 @@ servers:
     description: Sandbox Server
   - url: https://digicheck.io/api
     description: Production Server
+
 tags:
   - name: connection
     description: Connection Testing
