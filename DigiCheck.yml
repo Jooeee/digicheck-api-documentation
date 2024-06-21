@@ -16,6 +16,9 @@ externalDocs:
   url: http://swagger.io
 servers:
   - url: https://dev.digicheck.io/api
+    description: Sandbox Server
+  - url: https://digicheck.io/api
+    description: Production Server
 tags:
   - name: connection
     description: Connection Testing
