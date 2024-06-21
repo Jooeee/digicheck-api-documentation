@@ -654,8 +654,7 @@ components:
           example: GB
 
         birthTown:
-          type: string
-          format: string
+          $ref: "#/components/schemas/shortAddressLineType"
           example: Fake Town
 
         birthNationality:
@@ -1270,6 +1269,10 @@ components:
         code:
           type: string
           example: "422"
+
+    shortAddressLineType:
+      type: string
+      pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
 
   requestBodies:
     UserArray:
