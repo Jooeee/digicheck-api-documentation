@@ -2,13 +2,15 @@ openapi: 3.0.2
 info:
   title: DigiCheck®
   description: DigiCheck API Description goes here
-  termsOfService: http://swagger.io/terms/
+  termsOfService: https://unitecompliance.co.uk/api-terms-and-conditions
   contact:
     email: technical@digicheck.io
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 1.0.11
+  x-logo:
+    url: "https://digicheck.io/storage/temp/digi-check/icon.png"
 externalDocs:
   description: Check out our other APIs here
   url: http://swagger.io
