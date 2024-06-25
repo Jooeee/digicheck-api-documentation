@@ -2,14 +2,7 @@ openapi: 3.0.2
 info:
   title: DigiCheck®
   description: |
-    Description of Digicheck® RESTful API.
-
-    Current limitations:
-      * Example 1
-      * Example 2
-      * Example 3
-
-    **Warning:** Write what you like here.
+    The Digicheck® RESTful API allows you to fully interact with the DigiCheck® platform to submit applications, track progress, manage submissions and retrieve results. To create a sandbox envrionment, please contact DigiCheck®.
 
     Last update: 2024-06-21
   termsOfService: https://unitecompliance.co.uk/api-terms-and-conditions
