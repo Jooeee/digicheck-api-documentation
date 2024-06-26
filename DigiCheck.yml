@@ -613,6 +613,7 @@ components:
           example: Joe
           minLength: 2
           maxLength: 60
+          pattern: "([A-Z]+)|([A-Z][A-Z ']*[A-Z])"
 
         surname:
           type: string
@@ -620,10 +621,12 @@ components:
           example: Blogs
           minLength: 2
           maxLength: 60
+          pattern: "([A-Z]+)|([A-Z][A-Z ']*[A-Z])"
 
         middleNames:
           type: string
           format: array
+          maxItems: 3
           example:
             - middlenameone
             - middlenametwo
