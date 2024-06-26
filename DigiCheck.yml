@@ -721,10 +721,61 @@ components:
             $ref: "#/components/schemas/previousAddress"
 
         passport:
-          $ref: "#/components/schemas/passport"
+          type: object
+          properties:
+            status:
+              type: boolean
+              example: true
+
+            number:
+              type: string
+              format: string
+              example: "123456789"
+
+            issueCountry:
+              $ref: "#/components/schemas/countryCodes"
+              example: GB
+
+            dateOfIssue:
+              type: string
+              format: dd-mm-yyyy
+              pattern: "\\d{2}-\\d{2}-\\d{4}"
+              example: 01-12-2024
+
+            dob:
+              type: string
+              format: dd-mm-yyyy
+              pattern: "\\d{2}-\\d{2}-\\d{4}"
+              example: 01-01-2000
 
         drivingLicence:
-          $ref: "#/components/schemas/drivingLicence"
+          type: object
+          properties:
+            status:
+              type: boolean
+              example: true
+
+            number:
+              type: string
+              format: string
+              example: "12345678"
+
+            issueCountry:
+              $ref: "#/components/schemas/countryCodes"
+              example: GB
+
+            dateOfIssue:
+              type: string
+              format: dd-mm-yyyy
+              pattern: "\\d{2}-\\d{2}-\\d{4}"
+              example: 01-12-2024
+
+            type:
+              type: string
+              enum:
+                - photo
+                - paper
+              example: photo
 
         unspentConvictions:
           description: If the applicant has any unspent convictions they must be declared here.
@@ -1516,63 +1567,6 @@ components:
           format: yyyy
           pattern: '^\d{4}$'
           example: "2023"
-
-    passport:
-      type: object
-      properties:
-        status:
-          type: boolean
-          example: true
-
-        number:
-          type: string
-          format: string
-          example: "123456789"
-
-        issueCountry:
-          $ref: "#/components/schemas/countryCodes"
-          example: GB
-
-        dateOfIssue:
-          type: string
-          format: dd-mm-yyyy
-          pattern: "\\d{2}-\\d{2}-\\d{4}"
-          example: 01-12-2024
-
-        dob:
-          type: string
-          format: dd-mm-yyyy
-          pattern: "\\d{2}-\\d{2}-\\d{4}"
-          example: 01-01-2000
-
-    drivingLicence:
-      type: object
-      properties:
-        status:
-          type: boolean
-          example: true
-
-        number:
-          type: string
-          format: string
-          example: "12345678"
-
-        issueCountry:
-          $ref: "#/components/schemas/countryCodes"
-          example: GB
-
-        dateOfIssue:
-          type: string
-          format: dd-mm-yyyy
-          pattern: "\\d{2}-\\d{2}-\\d{4}"
-          example: 01-12-2024
-
-        type:
-          type: string
-          enum:
-            - photo
-            - paper
-          example: photo
 
     screening:
       type: object
