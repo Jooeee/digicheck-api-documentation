@@ -601,13 +601,13 @@ components:
           example: false
 
         adultFirstCheck:
-          description: If an Adult First Check is required set this to true.
+          description: If an Adult First Check is required set this to true. Please note that additional charges apply.
           type: boolean
           format: boolean
           example: false
 
         updateService:
-          description: Set this to true to add the applicant to the update server. Please note that additional charges may apply.
+          description: Set this to true to add the applicant to the update server. Please note that additional charges apply.
           type: boolean
           format: boolean
           example: false
@@ -629,6 +629,7 @@ components:
           pattern: '([A-Z]+)|([A-Z][A-Z &apos;\-]*[A-Z])'
 
         middleNames:
+          description: The applicant's middle name(s).
           type: string
           format: array
           maxItems: 3
@@ -640,12 +641,14 @@ components:
             - middlenametwo
 
         dob:
+          description: The applicant's date of birth.
           type: string
           format: dd-mm-yyyy
           pattern: "\\d{2}-\\d{2}-\\d{4}"
           example: 30-01-2000
 
         gender:
+          description: The applicant's gender. Only female and male are accepted here due to government constraints.
           type: string
           format: string
           enum:
@@ -654,44 +657,55 @@ components:
           example: male
 
         birthCountry:
+          description: The applicant's country of birth.
           $ref: "#/components/schemas/countryCodes"
           example: GB
 
         birthTown:
+          description: The applicant's town of birth.
           $ref: "#/components/schemas/shortAddressLineType"
           example: Fake Town
 
         birthNationality:
+          description: The applicant's birth nationality.
           $ref: "#/components/schemas/countryCodes"
           example: GB
 
         birthCounty:
+          description: The applicant's country of birth.
           type: string
           format: string
           example: Fake County
 
         email:
+          description: The applicant's email.
           type: string
           format: email
 
         niNumber:
+          description: The applicant's national insurance number.
           type: string
           format: string
           example: AA111111B
 
         isSurnameChanged:
+          description: If the applicants surname has changed, this must be declared here.
           $ref: "#/components/schemas/isSurnameChanged"
 
         isNationalityChanged:
+          description: If the applicant's nationality has changed, this must be declared here.
           $ref: "#/components/schemas/isNationalityChanged"
 
         hasOtherNames:
+          description: If the applicant has used any other names that have not been previously declared, these must be included here.
           $ref: "#/components/schemas/hasOtherNames"
 
         currentAddress:
+          description: The applicant's current address.
           $ref: "#/components/schemas/currentAddress"
 
         previousAddress:
+          description: A 5 year address history is required. Please include the applicant's previous addresses here if they have any.
           type: array
           items:
             $ref: "#/components/schemas/previousAddress"
@@ -703,6 +717,7 @@ components:
           $ref: "#/components/schemas/drivingLicence"
 
         unspentConvictions:
+          description: If the applicant has any unspent convictions they must be declared here.
           type: boolean
           example: false
 
@@ -710,6 +725,7 @@ components:
           type: object
           properties:
             positionAppliedFor:
+              description: The position the applicant is applying for.
               type: string
               minLength: 1
               maxLength: 60
@@ -717,6 +733,7 @@ components:
               example: Teacher
 
             workforceType:
+              description: The applicant's workforce type.
               type: string
               format: string
               enum:
@@ -727,6 +744,7 @@ components:
               example: child-and-adult
 
             employerName:
+              description: The name of the applicant's employer.
               type: string
               format: string
               example: Fake Company
