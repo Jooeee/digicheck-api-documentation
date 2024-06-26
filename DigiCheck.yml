@@ -833,8 +833,7 @@ components:
           example: Fake Town
 
         birthNationality:
-          type: string
-          format: string
+          $ref: "#/components/schemas/countryCodes"
           example: GB
 
         email:
