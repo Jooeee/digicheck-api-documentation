@@ -819,7 +819,15 @@ components:
               example: "12345678"
 
             issueCountry:
-              $ref: "#/components/schemas/countryCodes"
+              description: Only licences from GB, GI, GG, IE, IM, JE are accepted.
+              type: string
+              enum:
+                - GB
+                - GI
+                - GG
+                - IE
+                - IM
+                - JE
               example: GB
 
             dateOfIssue:
@@ -1042,7 +1050,15 @@ components:
               example: "12345678"
 
             issueCountry:
-              $ref: "#/components/schemas/countryCodes"
+              description: Only licences from GB, GI, GG, IE, IM, JE are accepted.
+              type: string
+              enum:
+                - GB
+                - GI
+                - GG
+                - IE
+                - IM
+                - JE
               example: GB
 
         nic:
