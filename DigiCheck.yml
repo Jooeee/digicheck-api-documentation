@@ -807,6 +807,7 @@ components:
               example: 30-01-2000
 
         drivingLicence:
+          description: The applicant's driving licence details.
           type: object
           properties:
             status:
