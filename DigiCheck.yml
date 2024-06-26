@@ -875,6 +875,7 @@ components:
           $ref: "#/components/schemas/manualVerification"
 
         client:
+          description: The user who is processing the application must provide their details for government audit. This should be the user who is verifying the applicant's documentation.
           type: object
           properties:
             email:
@@ -891,6 +892,7 @@ components:
               example: Bloggs
 
         requestPayment:
+          description: Set this to true to collect payment from the applicant.
           type: boolean
           example: false
 
@@ -1578,6 +1580,7 @@ components:
           example: false
 
     manualVerification:
+      description: If a digital ID check isn't being used, manual verification is needed.
       type: object
       properties:
         route:
@@ -1601,17 +1604,17 @@ components:
         checkedApplicantId:
           type: boolean
           example: true
-          description: Must be true to submit.
+          description: The user must check the applicant's ID inline with government guidelines. Must be true to submit.
 
         checkedApplicantAddress:
           type: boolean
           example: true
-          description: Must be true to submit.
+          description: The user must check the applicant's address inline with government guidelines. Must be true to submit.
 
         checkedApplicantDOB:
           type: boolean
           example: true
-          description: Must be true to submit.
+          description: The user must check the applicant's date of birth inline with government guidelines. Must be true to submit.
 
     documents:
       type: object
