@@ -689,7 +689,44 @@ components:
 
         isSurnameChanged:
           description: If the applicants surname has changed, this must be declared here.
-          $ref: "#/components/schemas/isSurnameChanged"
+          type: object
+          required:
+            - status
+          properties:
+            status:
+              description: Indicates if the applicant's surname has changed. Set this to true if the surname has changed or if the applicant is female and their title is anything other than MISS.
+              type: boolean
+              example: true
+
+            birthSurname:
+              description: The applicant's birth surname. This field is required if the surname has changed or if the applicant is female and their title is anything other than MISS.
+              type: string
+              minLength: 1
+              maxLength: 60
+              pattern: '([A-Z]+)|([A-Z][A-Z &apos;\-]*[A-Z])'
+              example: Jones
+
+            birthForename:
+              description: The applicant's birth forename. This field is required if the surname has changed or if the applicant is female and their title is anything other than MISS.
+              type: string
+              minLength: 1
+              maxLength: 60
+              pattern: '([A-Z]+)|([A-Z][A-Z &apos;\-]*[A-Z])'
+              example: Joe
+
+            usedUntilMonth:
+              description: The month until which the applicant used their birth surname (2 digits).
+              type: string
+              pattern: '^\d{2}$'
+              format: mm
+              example: "05"
+
+            usedUntilYear:
+              description: The year until which the applicant used their birth surname (4 digits).
+              type: string
+              format: yyyy
+              pattern: '^\d{4}$'
+              example: "2020"
 
         isNationalityChanged:
           description: If the applicant's nationality has changed, this must be declared here.
@@ -707,8 +744,29 @@ components:
               example: US
 
         hasOtherNames:
-          description: If the applicant has used any other names that have not been previously declared, these must be included here.
-          $ref: "#/components/schemas/hasOtherNames"
+          description: If the applicant has had any other names that have not been previously declared, these must be included here.
+          type: object
+          required:
+            - status
+          properties:
+            status:
+              description: Indicates if the applicant has had any other names not declared. Set this to true if the applicant has undeclared names.
+              type: boolean
+
+            names:
+              type: array
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    enum:
+                      - forename
+                      - surname
+
+                  name:
+                    type: string
+                    example: Dave
 
         currentAddress:
           description: The applicant's current address.
@@ -939,27 +997,6 @@ components:
           type: string
           example: Jones
 
-        hasOtherNames:
-          type: object
-          properties:
-            status:
-              type: boolean
-
-            names:
-              type: array
-              items:
-                type: object
-                properties:
-                  type:
-                    type: string
-                    enum:
-                      - forename
-                      - surname
-
-                  name:
-                    type: string
-                    example: Dave
-
         currentAddress:
           $ref: "#/components/schemas/currentAddress"
 
@@ -1062,46 +1099,6 @@ components:
             lastName:
               type: string
               example: Bloggs
-
-    isSurnameChanged:
-      type: object
-      required:
-        - status
-      properties:
-        status:
-          description: Indicates if the applicant's surname has changed. Set this to true if the surname has changed or if the applicant is female and their title is anything other than MISS.
-          type: boolean
-          example: true
-
-        birthSurname:
-          description: The applicant's birth surname. This field is required if the surname has changed or if the applicant is female and their title is anything other than MISS.
-          type: string
-          minLength: 1
-          maxLength: 60
-          pattern: '([A-Z]+)|([A-Z][A-Z &apos;\-]*[A-Z])'
-          example: Jones
-
-        birthForename:
-          description: The applicant's birth forename. This field is required if the surname has changed or if the applicant is female and their title is anything other than MISS.
-          type: string
-          minLength: 1
-          maxLength: 60
-          pattern: '([A-Z]+)|([A-Z][A-Z &apos;\-]*[A-Z])'
-          example: Joe
-
-        usedUntilMonth:
-          description: The month until which the applicant used their birth surname (2 digits).
-          type: string
-          pattern: '^\d{2}$'
-          format: mm
-          example: "05"
-
-        usedUntilYear:
-          description: The year until which the applicant used their birth surname (4 digits).
-          type: string
-          format: yyyy
-          pattern: '^\d{4}$'
-          example: "2020"
 
     hasOtherNames:
       type: object
