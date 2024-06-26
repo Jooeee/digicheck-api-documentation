@@ -648,7 +648,7 @@ components:
           example: 30-01-2000
 
         gender:
-          description: The applicant's gender. Only female and male are accepted here due to government constraints.
+          description: The applicant's gender. Only female and male values are accepted here due to government constraints. Please contact us if you require further information.
           type: string
           format: string
           enum:
@@ -1350,12 +1350,10 @@ components:
 
         line2:
           type: string
-          format: string
           example: Fake Street
 
         town:
           type: string
-          format: string
           example: Fake Town
 
         country:
@@ -1364,12 +1362,10 @@ components:
 
         county:
           type: string
-          format: string
           example: Fake County
 
         postCode:
           type: string
-          format: string
           example: DA101BB
 
         monthMovedIn:
@@ -1396,21 +1392,31 @@ components:
 
     previousAddress:
       type: object
+      required:
+        - line1
+        - town
+        - country
       properties:
         line1:
           description: Line 1 of the applicant's previous address.
           type: string
+          minLength: 1
+          maxLength: 60
+          pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
           example: 32 Fake Block
 
         line2:
           description: Line 2 of the applicant's previous address, if applicable.
           type: string
+          minLength: 1
+          maxLength: 60
+          pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
           example: Fake Road
 
         town:
           description: Town or city of the applicant's previous address
-          type: string
-          example: Fake Town
+          $ref: "#/components/schemas/shortAddressLineType"
+          example: "Fake Town"
 
         country:
           description: The country code of the applicant's previous address.
@@ -1423,7 +1429,7 @@ components:
           example: Fake County
 
         postCode:
-          description: Postal code of the applicant's previous address.
+          description: Postal code of the applicant's previous address. This is required if a UK address is being used.
           type: string
           example: DA101BB
 
@@ -1438,6 +1444,7 @@ components:
           description: Year when the applicant moved into the previous address.
           type: string
           format: yyyy
+          pattern: '^\d{4}$'
           example: "2001"
 
         monthLivedUntil:
@@ -1451,6 +1458,7 @@ components:
           description: Year when the applicant moved out of the previous address.
           type: string
           format: yyyy
+          pattern: '^\d{4}$'
           example: "2023"
 
     passport:
