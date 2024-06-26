@@ -100,13 +100,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/DBS"
+              $ref: "#/components/schemas/scottishDSS"
           application/xml:
             schema:
-              $ref: "#/components/schemas/DBS"
+              $ref: "#/components/schemas/scottishDSS"
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/DBS"
+              $ref: "#/components/schemas/scottishDSS"
         required: true
       responses:
         "200":
@@ -772,6 +772,210 @@ components:
 
       xml:
         name: submitDBS
+
+    scottishDSS:
+      type: object
+      properties:
+        encryption:
+          type: boolean
+          example: false
+
+        title:
+          type: string
+          enum:
+            - MR
+            - MRS
+            - MISS
+
+        products:
+          type: array
+          items:
+            enum:
+              - scottish-basic-dbs-check
+            example: scottish-basic-dbs-check
+
+        forename:
+          type: string
+          format: string
+          example: Joe
+          minLength: 2
+          maxLength: 60
+
+        surname:
+          type: string
+          format: string
+          example: Blogs
+          minLength: 2
+          maxLength: 60
+
+        dob:
+          type: string
+          format: dd-mm-yyyy
+          example: 30-01-2000
+
+        gender:
+          type: string
+          format: string
+          enum:
+            - male
+            - female
+          example: male
+
+        birthCountry:
+          type: string
+          format: string
+          example: GB
+
+        birthTown:
+          type: string
+          example: Fake Town
+
+        birthNationality:
+          type: string
+          format: string
+          example: GB
+
+        email:
+          type: string
+          format: email
+
+        niNumber:
+          type: string
+          format: string
+          example: AA111111B
+
+        phoneNumber:
+          type: string
+          example: "012345678910"
+
+        motherMaidenName:
+          type: string
+          example: Jones
+
+        hasOtherNames:
+          type: object
+          properties:
+            status:
+              type: boolean
+
+            names:
+              type: array
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    enum:
+                      - forename
+                      - surname
+
+                  name:
+                    type: string
+                    example: Dave
+
+            currentAddress:
+              $ref: "#/components/schemas/currentAddress"
+
+            previousAddress:
+              type: array
+              items:
+                $ref: "#/components/schemas/previousAddress"
+
+            passport:
+              type: object
+              properties:
+                status:
+                  type: boolean
+                  example: true
+
+                number:
+                  type: string
+                  format: string
+                  example: "123456789"
+
+                issueCountry:
+                  type: string
+                  format: string
+                  example: GB
+
+                dateOfIssue:
+                  type: string
+                  format: date
+                  example: 01-12-2024
+
+            drivingLicence:
+              type: object
+              properties:
+                status:
+                  type: boolean
+                  example: true
+
+                number:
+                  type: string
+                  format: string
+                  example: "12345678"
+
+                issueCountry:
+                  type: string
+                  format: string
+                  example: GB
+
+            nic:
+              type: object
+              properties:
+                status:
+                  type: boolean
+                  example: true
+
+                number:
+                  type: string
+                  example: "12345678"
+
+                issueCountry:
+                  type: string
+                  example: GB
+
+            manualVerification:
+              type: object
+              properties:
+                route:
+                  type: string
+                  example: 1
+
+                documents:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: primary
+
+                      document:
+                        type: string
+                        example: driving licence photocard (full or provisional)
+
+                    example:
+                      - type: primary
+                        document: driving licence photocard (full or provisional)
+                      - type: supporting
+                        document: utility bill, such as gas, electric or phone bill
+
+            client:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: joe@unitecompliance.co.uk
+
+                firstName:
+                  type: string
+                  example: Joe
+
+                lastName:
+                  type: string
+                  example: Bloggs
 
     isSurnameChanged:
       type: object
