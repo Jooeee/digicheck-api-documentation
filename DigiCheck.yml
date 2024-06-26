@@ -607,7 +607,7 @@ components:
           example: false
 
         updateService:
-          description: Set this to true to add the applicant to the update server. Please note that additional charges apply.
+          description: Set this to true to add the applicant to the update service. Please note that additional charges apply.
           type: boolean
           format: boolean
           example: false
@@ -1398,54 +1398,59 @@ components:
       type: object
       properties:
         line1:
+          description: Line 1 of the applicant's previous address.
           type: string
-          format: string
           example: 32 Fake Block
 
         line2:
+          description: Line 2 of the applicant's previous address, if applicable.
           type: string
-          format: string
           example: Fake Road
 
         town:
+          description: Town or city of the applicant's previous address
           type: string
-          format: string
           example: Fake Town
 
         country:
+          description: The country code of the applicant's previous address.
           $ref: "#/components/schemas/countryCodes"
           example: "GB"
 
         county:
+          description: County or region of the applicant's previous address.
           type: string
-          format: string
           example: Fake County
 
         postCode:
+          description: Postal code of the applicant's previous address.
           type: string
-          format: string
           example: DA101BB
 
         monthMovedIn:
+          description: Month when the applicant moved into the previous address (2 digits).
           type: string
-          format: string
+          format: mm
           pattern: '^\d{2}$'
           example: "10"
 
         yearMovedIn:
+          description: Year when the applicant moved into the previous address.
           type: string
-          format: string
+          format: yyyy
           example: "2001"
 
         monthLivedUntil:
+          description: Month when the applicant moved out of the previous address (2 digits).
           type: string
-          format: string
+          format: mm
           pattern: '^\d{2}$'
           example: "06"
 
         yearLivedUntil:
+          description: Year when the applicant moved out of the previous address.
           type: string
-          format: string
+          format: yyyy
           example: "2023"
 
     passport:
