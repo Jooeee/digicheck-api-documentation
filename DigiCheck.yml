@@ -1342,52 +1342,84 @@ components:
 
     currentAddress:
       type: object
+      required:
+        - line1
+        - town
+        - country
+        - monthMovedIn
+        - yearMovedIn
       properties:
         line1:
+          description: Line 1 of the applicant's current address.
           type: string
-          format: string
+          minLength: 1
+          maxLength: 60
+          pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
           example: 30 Fake Block
 
         line2:
+          description: Line 2 of the applicant's current address, if applicable.
           type: string
+          minLength: 1
+          maxLength: 60
+          pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
           example: Fake Street
 
         town:
+          description: Town or city of the applicant's current address.
           type: string
+          minLength: 1
+          maxLength: 30
+          pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
           example: Fake Town
 
         country:
+          description: The country code of the applicant's current address.
           $ref: "#/components/schemas/countryCodes"
           example: "GB"
 
         county:
+          description: County or region of the applicant's current address.
           type: string
+          minLength: 1
+          maxLength: 30
+          pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
           example: Fake County
 
         postCode:
+          description: Postal code of the applicant's current address. This is required if a GB address is being entered.
           type: string
+          minLength: 1
+          maxLength: 30
+          pattern: '([A-Z0-9\(\)\-/&apos;]+)|([A-Z0-9\(\)\-/&apos;][A-Z 0-9\(\)\-/&apos;]*[A-Z0-9\(\)\-/&apos;])'
           example: DA101BB
 
         monthMovedIn:
+          description: Month when the applicant moved into the current address (2 digits).
           type: string
-          format: string
+          format: mm
           pattern: '^\d{2}$'
           example: "06"
 
         yearMovedIn:
+          description: Year when the applicant moved into the current address.
           type: string
-          format: string
+          format: yyyy
+          pattern: '^\d{4}$'
           example: "2023"
 
         monthLivedUntil:
+          description: Month when the applicant moved out of the current address (2 digits).
           type: string
-          format: string
+          format: mm
           pattern: '^\d{2}$'
           example: "06"
 
         yearLivedUntil:
+          description: Year when the applicant moved out of the current address.
           type: string
-          format: string
+          format: yyyy
+          pattern: '^\d{4}$'
           example: "2024"
 
     previousAddress:
@@ -1396,6 +1428,10 @@ components:
         - line1
         - town
         - country
+        - monthMovedIn
+        - yearMovedIn
+        - monthLivedUntil
+        - yearLivedUntil
       properties:
         line1:
           description: Line 1 of the applicant's previous address.
@@ -1415,8 +1451,11 @@ components:
 
         town:
           description: Town or city of the applicant's previous address
-          $ref: "#/components/schemas/shortAddressLineType"
-          example: "Fake Town"
+          type: string
+          minLength: 1
+          maxLength: 30
+          pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
+          example: Fake Town
 
         country:
           description: The country code of the applicant's previous address.
@@ -1426,11 +1465,17 @@ components:
         county:
           description: County or region of the applicant's previous address.
           type: string
+          minLength: 1
+          maxLength: 30
+          pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
           example: Fake County
 
         postCode:
-          description: Postal code of the applicant's previous address. This is required if a UK address is being used.
+          description: Postal code of the applicant's previous address. This is required if a GB address is being entered.
           type: string
+          minLength: 1
+          maxLength: 30
+          pattern: '([A-Z0-9\(\)\-/&apos;]+)|([A-Z0-9\(\)\-/&apos;][A-Z 0-9\(\)\-/&apos;]*[A-Z0-9\(\)\-/&apos;])'
           example: DA101BB
 
         monthMovedIn:
