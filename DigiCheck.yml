@@ -1516,12 +1516,18 @@ components:
 
         checkedApplicantId:
           type: boolean
+          example: true
+          description: Must be true to submit.
 
         checkedApplicantAddress:
           type: boolean
+          example: true
+          description: Must be true to submit.
 
         checkedApplicantDOB:
           type: boolean
+          example: true
+          description: Must be true to submit.
 
     documents:
       type: object
