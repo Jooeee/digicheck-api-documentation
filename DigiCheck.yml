@@ -693,7 +693,18 @@ components:
 
         isNationalityChanged:
           description: If the applicant's nationality has changed, this must be declared here.
-          $ref: "#/components/schemas/isNationalityChanged"
+          type: object
+          required:
+            - status
+          properties:
+            status:
+              description: Indicates if the applicant's nationality has changed. Set this to true if the nationality has changed.
+              type: boolean
+
+            newNationality:
+              description: The applicants new nationality.
+              $ref: "#/components/schemas/countryCodes"
+              example: US
 
         hasOtherNames:
           description: If the applicant has used any other names that have not been previously declared, these must be included here.
@@ -1040,17 +1051,6 @@ components:
           format: yyyy
           pattern: '^\d{4}$'
           example: "2020"
-
-    isNationalityChanged:
-      type: object
-      properties:
-        status:
-          type: boolean
-
-        newNationality:
-          type: string
-          format: string
-          example: US
 
     hasOtherNames:
       type: object
