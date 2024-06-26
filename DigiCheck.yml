@@ -100,13 +100,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/scottishDSS"
+              $ref: "#/components/schemas/scottishDs"
           application/xml:
             schema:
-              $ref: "#/components/schemas/scottishDSS"
+              $ref: "#/components/schemas/scottishDs"
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/scottishDSS"
+              $ref: "#/components/schemas/scottishDs"
         required: true
       responses:
         "200":
@@ -773,7 +773,7 @@ components:
       xml:
         name: submitDBS
 
-    scottishDSS:
+    scottishDs:
       type: object
       properties:
         encryption:
@@ -873,109 +873,109 @@ components:
                     type: string
                     example: Dave
 
-            currentAddress:
-              $ref: "#/components/schemas/currentAddress"
+        currentAddress:
+          $ref: "#/components/schemas/currentAddress"
 
-            previousAddress:
+        previousAddress:
+          type: array
+          items:
+            $ref: "#/components/schemas/previousAddress"
+
+        passport:
+          type: object
+          properties:
+            status:
+              type: boolean
+              example: true
+
+            number:
+              type: string
+              format: string
+              example: "123456789"
+
+            issueCountry:
+              type: string
+              format: string
+              example: GB
+
+            dateOfIssue:
+              type: string
+              format: date
+              example: 01-12-2023
+
+        drivingLicence:
+          type: object
+          properties:
+            status:
+              type: boolean
+              example: true
+
+            number:
+              type: string
+              format: string
+              example: "12345678"
+
+            issueCountry:
+              type: string
+              format: string
+              example: GB
+
+        nic:
+          type: object
+          properties:
+            status:
+              type: boolean
+              example: true
+
+            number:
+              type: string
+              example: "12345678"
+
+            issueCountry:
+              type: string
+              example: GB
+
+        manualVerification:
+          type: object
+          properties:
+            route:
+              type: string
+              example: 1
+
+            documents:
               type: array
               items:
-                $ref: "#/components/schemas/previousAddress"
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: primary
 
-            passport:
-              type: object
-              properties:
-                status:
-                  type: boolean
-                  example: true
+                  document:
+                    type: string
+                    example: driving licence photocard (full or provisional)
 
-                number:
-                  type: string
-                  format: string
-                  example: "123456789"
+              example:
+                - type: primary
+                  document: driving licence photocard (full or provisional)
+                - type: supporting
+                  document: utility bill, such as gas, electric or phone bill
 
-                issueCountry:
-                  type: string
-                  format: string
-                  example: GB
+        client:
+          type: object
+          properties:
+            email:
+              type: string
+              format: email
+              example: joe@unitecompliance.co.uk
 
-                dateOfIssue:
-                  type: string
-                  format: date
-                  example: 01-12-2024
+            firstName:
+              type: string
+              example: Joe
 
-            drivingLicence:
-              type: object
-              properties:
-                status:
-                  type: boolean
-                  example: true
-
-                number:
-                  type: string
-                  format: string
-                  example: "12345678"
-
-                issueCountry:
-                  type: string
-                  format: string
-                  example: GB
-
-            nic:
-              type: object
-              properties:
-                status:
-                  type: boolean
-                  example: true
-
-                number:
-                  type: string
-                  example: "12345678"
-
-                issueCountry:
-                  type: string
-                  example: GB
-
-            manualVerification:
-              type: object
-              properties:
-                route:
-                  type: string
-                  example: 1
-
-                documents:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      type:
-                        type: string
-                        example: primary
-
-                      document:
-                        type: string
-                        example: driving licence photocard (full or provisional)
-
-                    example:
-                      - type: primary
-                        document: driving licence photocard (full or provisional)
-                      - type: supporting
-                        document: utility bill, such as gas, electric or phone bill
-
-            client:
-              type: object
-              properties:
-                email:
-                  type: string
-                  format: email
-                  example: joe@unitecompliance.co.uk
-
-                firstName:
-                  type: string
-                  example: Joe
-
-                lastName:
-                  type: string
-                  example: Bloggs
+            lastName:
+              type: string
+              example: Bloggs
 
     isSurnameChanged:
       type: object
