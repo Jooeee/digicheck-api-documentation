@@ -778,7 +778,7 @@ components:
                   usedFromYear:
                     type: string
                     format: string
-                    example: "2000"
+                    example: "2010"
 
                   usedUntilMonth:
                     description: The month until which the applicant used this name (2 digits).
