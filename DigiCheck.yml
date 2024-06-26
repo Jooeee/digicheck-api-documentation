@@ -57,13 +57,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/DBS"
+              $ref: "#/components/schemas/standardEnhancedDbs"
           application/xml:
             schema:
-              $ref: "#/components/schemas/DBS"
+              $ref: "#/components/schemas/standardEnhancedDbs"
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/DBS"
+              $ref: "#/components/schemas/standardEnhancedDbs"
         required: true
       responses:
         "200":
@@ -74,7 +74,7 @@ paths:
                 $ref: "#/components/schemas/dbsSuccess"
             application/xml:
               schema:
-                $ref: "#/components/schemas/DBS"
+                $ref: "#/components/schemas/standardEnhancedDbs"
         "400":
           description: Invalid ID supplied
         "404":
@@ -114,10 +114,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DBS"
+                $ref: "#/components/schemas/standardEnhancedDbs"
             application/xml:
               schema:
-                $ref: "#/components/schemas/DBS"
+                $ref: "#/components/schemas/standardEnhancedDbs"
         "400":
           description: Invalid ID supplied
         "404":
@@ -139,13 +139,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/DBS"
+              $ref: "#/components/schemas/standardEnhancedDbs"
           application/xml:
             schema:
-              $ref: "#/components/schemas/DBS"
+              $ref: "#/components/schemas/standardEnhancedDbs"
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/DBS"
+              $ref: "#/components/schemas/standardEnhancedDbs"
         required: true
       responses:
         "200":
@@ -153,10 +153,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DBS"
+                $ref: "#/components/schemas/standardEnhancedDbs"
             application/xml:
               schema:
-                $ref: "#/components/schemas/DBS"
+                $ref: "#/components/schemas/standardEnhancedDbs"
         "400":
           description: Invalid ID supplied
         "404":
@@ -542,7 +542,7 @@ paths:
 
 components:
   schemas:
-    DBS:
+    standardEnhancedDbs:
       type: object
       properties:
         encryption:
