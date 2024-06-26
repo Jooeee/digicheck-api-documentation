@@ -611,14 +611,14 @@ components:
           example: Joe
           minLength: 2
           maxLength: 60
-          pattern: "([A-Z]+)|([A-Z][A-Z ']*[A-Z])"
+          pattern: '([A-Z]+)|([A-Z][A-Z &apos;\-]*[A-Z])'
 
         surname:
           type: string
           example: Blogs
           minLength: 2
           maxLength: 60
-          pattern: "([A-Z]+)|([A-Z][A-Z ']*[A-Z])"
+          pattern: '([A-Z]+)|([A-Z][A-Z &apos;\-]*[A-Z])'
 
         middleNames:
           type: string
@@ -626,7 +626,7 @@ components:
           maxItems: 3
           minLength: 1
           maxLength: 60
-          pattern: "([A-Z]+)|([A-Z][A-Z ']*[A-Z])"
+          pattern: '([A-Z]+)|([A-Z][A-Z &apos;\-]*[A-Z])'
           example:
             - middlenameone
             - middlenametwo
@@ -634,6 +634,7 @@ components:
         dob:
           type: string
           format: dd-mm-yyyy
+          pattern: "\\d{2}-\\d{2}-\\d{4}"
           example: 30-01-2000
 
         gender:
@@ -705,7 +706,7 @@ components:
               type: string
               minLength: 1
               maxLength: 60
-              pattern: "^([A-Z0-9\\(\\)\\-\\/\\'&]+)|([A-Z0-9\\(\\)\\-\\/\\'&][A-Z 0-9\\(\\)\\-\\/\\'&]*[A-Z0-9\\(\\)\\-\\/\\'&])$"
+              pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
               example: Teacher
 
             workforceType:
@@ -1712,6 +1713,8 @@ components:
 
     shortAddressLineType:
       type: string
+      minLength: 1
+      maxLength: 30
       pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
 
   requestBodies:
