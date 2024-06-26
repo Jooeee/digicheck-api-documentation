@@ -1171,6 +1171,7 @@ components:
       minLength: 2
       maxLength: 2
       description: These are ISO 3166-1 Alpha-2 country codes.
+      example: GB
       enum:
         - AD
         - AE
