@@ -650,7 +650,6 @@ components:
         gender:
           description: The applicant's gender. Only female and male values are accepted here due to government constraints. Please contact us if you require further information.
           type: string
-          format: string
           enum:
             - male
             - female
@@ -844,7 +843,6 @@ components:
 
         gender:
           type: string
-          format: string
           enum:
             - male
             - female
@@ -1005,29 +1003,42 @@ components:
 
     isSurnameChanged:
       type: object
+      required:
+        - status
       properties:
         status:
+          description: Indicates if the applicant's surname has changed. Set this to true if the surname has changed or if the applicant is female and their title is anything other than MISS.
           type: boolean
           example: true
 
         birthSurname:
+          description: The applicant's birth surname. This field is required if the surname has changed or if the applicant is female and their title is anything other than MISS.
           type: string
-          format: string
+          minLength: 1
+          maxLength: 60
+          pattern: '([A-Z]+)|([A-Z][A-Z &apos;\-]*[A-Z])'
           example: Jones
 
         birthForename:
+          description: The applicant's birth forename. This field is required if the surname has changed or if the applicant is female and their title is anything other than MISS.
           type: string
-          format: string
+          minLength: 1
+          maxLength: 60
+          pattern: '([A-Z]+)|([A-Z][A-Z &apos;\-]*[A-Z])'
           example: Joe
 
         usedUntilMonth:
+          description: The month until which the applicant used their birth surname (2 digits).
           type: string
           pattern: '^\d{2}$'
+          format: mm
           example: "05"
 
         usedUntilYear:
+          description: The year until which the applicant used their birth surname (4 digits).
           type: string
-          format: string
+          format: yyyy
+          pattern: '^\d{4}$'
           example: "2020"
 
     isNationalityChanged:
