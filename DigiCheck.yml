@@ -546,9 +546,11 @@ components:
       type: object
       properties:
         encryption:
+          description: If you are passing an encrypted payload please set this to true.
           type: boolean
           example: false
         title:
+          description: The applicant's title.
           type: string
           enum:
             - BARON
@@ -584,6 +586,7 @@ components:
             - WG CDR
 
         products:
+          description: The level of check required.
           type: array
           items:
             enum:
@@ -592,21 +595,25 @@ components:
             example: enhanced-dbs-check
 
         volunteer:
+          description: If the applicant is a volunteer set this to true.
           type: boolean
           format: boolean
           example: false
 
         adultFirstCheck:
+          description: If an Adult First Check is required set this to true.
           type: boolean
           format: boolean
           example: false
 
         updateService:
+          description: Set this to true to add the applicant to the update server. Please note that additional charges may apply.
           type: boolean
           format: boolean
           example: false
 
         forename:
+          description: The applicant's forename.
           type: string
           example: Joe
           minLength: 2
@@ -614,6 +621,7 @@ components:
           pattern: '([A-Z]+)|([A-Z][A-Z &apos;\-]*[A-Z])'
 
         surname:
+          description: The applicant's surname.
           type: string
           example: Blogs
           minLength: 2
