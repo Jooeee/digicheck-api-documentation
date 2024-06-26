@@ -814,6 +814,7 @@ components:
         dob:
           type: string
           format: dd-mm-yyyy
+          pattern: "\\d{2}-\\d{2}-\\d{4}"
           example: 30-01-2000
 
         gender:
@@ -901,7 +902,8 @@ components:
 
             dateOfIssue:
               type: string
-              format: date
+              format: dd-mm-yyyy
+              pattern: "\\d{2}-\\d{2}-\\d{4}"
               example: 01-12-2023
 
         drivingLicence:
@@ -1439,12 +1441,14 @@ components:
 
         dateOfIssue:
           type: string
-          format: date
+          format: dd-mm-yyyy
+          pattern: "\\d{2}-\\d{2}-\\d{4}"
           example: 01-12-2024
 
         dob:
           type: string
-          format: date
+          format: dd-mm-yyyy
+          pattern: "\\d{2}-\\d{2}-\\d{4}"
           example: 01-01-2000
 
     drivingLicence:
@@ -1465,7 +1469,8 @@ components:
 
         dateOfIssue:
           type: string
-          format: date
+          format: dd-mm-yyyy
+          pattern: "\\d{2}-\\d{2}-\\d{4}"
           example: 01-12-2024
 
         type:
