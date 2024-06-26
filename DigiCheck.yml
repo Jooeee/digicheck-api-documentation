@@ -763,10 +763,36 @@ components:
                     enum:
                       - forename
                       - surname
+                    example: forename
 
                   name:
                     type: string
                     example: Dave
+
+                  usedFromMonth:
+                    type: string
+                    format: string
+                    pattern: '^\d{2}$'
+                    example: "01"
+
+                  usedFromYear:
+                    type: string
+                    format: string
+                    example: "2000"
+
+                  usedUntilMonth:
+                    description: The month until which the applicant used this name (2 digits).
+                    type: string
+                    pattern: '^\d{2}$'
+                    format: mm
+                    example: "05"
+
+                  usedUntilYear:
+                    description: The year until which the applicant used this name (4 digits).
+                    type: string
+                    format: yyyy
+                    pattern: '^\d{4}$'
+                    example: "2020"
 
         currentAddress:
           description: The applicant's current address.
