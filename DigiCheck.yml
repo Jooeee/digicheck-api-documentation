@@ -546,7 +546,7 @@ components:
       type: object
       properties:
         encryption:
-          description: If you are passing an encrypted payload please set this to true.
+          description: Set this to true if the payload is encrypted. A payload with AES 256-bit encryption in ECB mode is accepted. The AES key size is 32 bytes (256 bits). Refer to the relevant schema for details.
           type: boolean
           example: false
         title:
@@ -629,7 +629,7 @@ components:
           pattern: '([A-Z]+)|([A-Z][A-Z &apos;\-]*[A-Z])'
 
         middleNames:
-          description: The applicant's middle name(s).
+          description: The applicant's middle name(s). This array is limited to 3 values.
           type: string
           format: array
           maxItems: 3
