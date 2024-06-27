@@ -662,7 +662,10 @@ components:
 
         birthTown:
           description: The applicant's town of birth.
-          $ref: "#/components/schemas/shortAddressLineType"
+          type: string
+          minLength: 1
+          maxLength: 30
+          pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
           example: Fake Town
 
         birthNationality:
@@ -673,7 +676,9 @@ components:
         birthCounty:
           description: The applicant's country of birth.
           type: string
-          format: string
+          minLength: 1
+          maxLength: 30
+          pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
           example: Fake County
 
         email:
@@ -1850,12 +1855,6 @@ components:
         code:
           type: string
           example: "422"
-
-    shortAddressLineType:
-      type: string
-      minLength: 1
-      maxLength: 30
-      pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
 
   requestBodies:
     UserArray:
