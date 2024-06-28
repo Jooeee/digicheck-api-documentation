@@ -827,6 +827,7 @@ components:
 
         passport:
           type: object
+          description: Indicates whether the applicant is providing passport details. Set this to true if they are.
           properties:
             status:
               type: boolean
@@ -834,22 +835,26 @@ components:
 
             number:
               type: string
+              description: The passport number of the applicant.
               minLength: 1
               maxLength: 11
               pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
               example: "123456789"
 
             issueCountry:
+              description: The country code where the passport was issued.
               $ref: "#/components/schemas/countryCodes"
               example: GB
 
             dateOfIssue:
+              description: The date when the passport was issued.
               type: string
               format: dd-mm-yyyy
               pattern: "\\d{2}-\\d{2}-\\d{4}"
               example: 01-12-2023
 
             dob:
+              description: The date of birth displayed on the passport.
               type: string
               format: dd-mm-yyyy
               pattern: "\\d{2}-\\d{2}-\\d{4}"
@@ -915,7 +920,7 @@ components:
               description: The position the applicant is applying for.
               type: string
               minLength: 1
-              maxLength: 60
+              maxLength: 34
               pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
               example: Teacher
 
@@ -933,7 +938,9 @@ components:
             employerName:
               description: The name of the applicant's employer.
               type: string
-              format: string
+              minLength: 1
+              maxLength: 60
+              pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
               example: Fake Company
 
         screening:
