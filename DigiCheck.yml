@@ -685,6 +685,9 @@ components:
           description: The applicant's email.
           type: string
           format: email
+          minLength: 1
+          maxLength: 64
+          pattern: '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/'
           example: applicantsemail@exampletext.co.uk
 
         niNumber:
