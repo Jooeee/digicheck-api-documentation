@@ -546,7 +546,7 @@ components:
       type: object
       properties:
         encryption:
-          description: Set this to true if the payload is encrypted. A payload with AES 256-bit encryption in ECB mode is accepted. The AES key size is 32 bytes (256 bits). Refer to the relevant schema for details.
+          description: Set this to true if the payload is encrypted. A payload with AES 256-bit encryption in ECB mode is accepted. The AES key size is 32 bytes (256 bits). Please refer to the relevant schema for details.
           type: boolean
           example: false
         title:
@@ -685,11 +685,14 @@ components:
           description: The applicant's email.
           type: string
           format: email
+          example: applicantsemail@exampletext.co.uk
 
         niNumber:
           description: The applicant's national insurance number.
           type: string
-          format: string
+          minLength: 9
+          maxLength: 9
+          pattern: "([A-Z0-9]+)|([A-Z0-9][A-Z 0-9]*)"
           example: AA111111B
 
         isSurnameChanged:
