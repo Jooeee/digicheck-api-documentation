@@ -924,7 +924,7 @@ components:
               minLength: 1
               maxLength: 34
               pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
-              example: Teacher
+              example: Primary School Teacher
 
             workforceType:
               description: The applicant's workforce type.
@@ -946,10 +946,68 @@ components:
               example: Fake Company
 
         screening:
-          $ref: "#/components/schemas/screening"
+          type: object
+          properties:
+            workingWithAdults:
+              description: If the applicant requires a DBS check with the adult barred list. This is only applicable to Enhanced checks.
+              type: boolean
+              example: true
+
+            workingWithChildren:
+              description: If the applicant requires a DBS check with the childrens barred list. This is only applicable to Enhanced checks.
+              type: boolean
+              example: true
+
+            workingAtApplicantAddress:
+              description: Indicates if the applicant is working at their home address. This is only applicable to Enhanced check.
+              type: boolean
+              example: false
 
         manualVerification:
-          $ref: "#/components/schemas/manualVerification"
+          description: If a digital ID check isn't being used, manual verification is needed.
+          type: object
+          properties:
+            route:
+              type: integer
+              format: int32
+              example: 1
+
+            documents:
+              type: array
+              minItems: 3
+              items:
+                type: object
+                properties:
+                  documents:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+
+                      document:
+                        type: string
+              example:
+                - type: "primary"
+                  document: "Passport"
+                - type: "supporting"
+                  document: "Biometric Residence Permit"
+                - type: "supporting"
+                  document: "Adoption Certificate"
+
+            checkedApplicantId:
+              type: boolean
+              example: true
+              description: The user must check the applicant's ID inline with government guidelines. Must be true to submit.
+
+            checkedApplicantAddress:
+              type: boolean
+              example: true
+              description: The user must check the applicant's address inline with government guidelines. Must be true to submit.
+
+            checkedApplicantDOB:
+              type: boolean
+              example: true
+              description: The user must check the applicant's date of birth inline with government guidelines. Must be true to submit.
 
         client:
           description: The user who is processing the application must provide their details for government audit. This should be the user who is verifying the applicant's documentation.
@@ -958,15 +1016,22 @@ components:
             email:
               type: string
               format: email
+              minLength: 1
+              maxLength: 64
+              pattern: '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/'
               example: joe@unitecompliance.co.uk
 
             firstName:
               type: string
               example: Joe
+              minLength: 1
+              maxLength: 30
 
             lastName:
               type: string
               example: Bloggs
+              minLength: 1
+              maxLength: 30
 
         requestPayment:
           description: Set this to true to collect payment from the applicant.
@@ -1650,67 +1715,6 @@ components:
           format: yyyy
           pattern: '^\d{4}$'
           example: "2023"
-
-    screening:
-      type: object
-      properties:
-        workingWithAdults:
-          type: boolean
-          example: true
-
-        workingWithChildren:
-          type: boolean
-          example: true
-
-        workingAtApplicantAddress:
-          type: boolean
-          example: false
-
-    manualVerification:
-      description: If a digital ID check isn't being used, manual verification is needed.
-      type: object
-      properties:
-        route:
-          type: integer
-          format: int32
-          example: 1
-
-        documents:
-          type: array
-          minItems: 3
-          items:
-            $ref: "#/components/schemas/documents"
-          example:
-            - type: "primary"
-              document: "Passport"
-            - type: "supporting"
-              document: "Biometric Residence Permit"
-            - type: "supporting"
-              document: "Adoption Certificate"
-
-        checkedApplicantId:
-          type: boolean
-          example: true
-          description: The user must check the applicant's ID inline with government guidelines. Must be true to submit.
-
-        checkedApplicantAddress:
-          type: boolean
-          example: true
-          description: The user must check the applicant's address inline with government guidelines. Must be true to submit.
-
-        checkedApplicantDOB:
-          type: boolean
-          example: true
-          description: The user must check the applicant's date of birth inline with government guidelines. Must be true to submit.
-
-    documents:
-      type: object
-      properties:
-        type:
-          type: string
-
-        document:
-          type: string
 
     connectionTestResult:
       type: object
