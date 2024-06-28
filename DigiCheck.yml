@@ -959,7 +959,7 @@ components:
               example: true
 
             workingAtApplicantAddress:
-              description: Indicates if the applicant is working at their home address. This is only applicable to Enhanced check.
+              description: Indicates if the applicant is working at their home address. This is only applicable to Enhanced checks.
               type: boolean
               example: false
 
@@ -990,13 +990,13 @@ components:
 
                       document:
                         type: string
-              example:
-                - type: "primary"
-                  document: "Passport"
-                - type: "supporting"
-                  document: "Biometric Residence Permit"
-                - type: "supporting"
-                  document: "Adoption Certificate"
+                        example:
+                          - type: "primary"
+                            document: "Passport"
+                          - type: "supporting"
+                            document: "Biometric Residence Permit"
+                          - type: "supporting"
+                            document: "Adoption Certificate"
 
             checkedApplicantId:
               type: boolean
