@@ -979,11 +979,11 @@ components:
             documents:
               type: array
               minItems: 3
+              maxItems: 5
               items:
                 type: object
                 properties:
-                  documents:
-                    type: object
+                  type:
                     properties:
                       type:
                         description: The document type being used. Can either be primary or supporting.
