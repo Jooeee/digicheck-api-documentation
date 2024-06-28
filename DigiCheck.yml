@@ -834,7 +834,9 @@ components:
 
             number:
               type: string
-              format: string
+              minLength: 1
+              maxLength: 11
+              pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
               example: "123456789"
 
             issueCountry:
@@ -858,16 +860,22 @@ components:
           type: object
           properties:
             status:
+              description: Indicates whether the applicant is providing driving licence details. Set this to true if they are.
               type: boolean
               example: true
 
             number:
+              description: The driving licence number of the applicant.
               type: string
-              format: string
+              minLength: 1
+              maxLength: 18
+              pattern: '([A-Z0-9\(\)\-/&apos;&amp;]+)|([A-Z0-9\(\)\-/&apos;&amp;][A-Z 0-9\(\)\-/&apos;&amp;]*[A-Z0-9\(\)\-/&apos;&amp;])'
               example: "12345678"
 
             issueCountry:
-              description: Only licences from GB, GI, GG, IE, IM, JE are accepted.
+              description: The country code where the driving licence was issued. Only licences from GB (Great Britain), GI (Gibraltar), GG (Guernsey), IE (Ireland), IM (Isle of Man), and JE (Jersey) are accepted.
+              minLength: 2
+              maxLength: 2
               type: string
               enum:
                 - GB
@@ -879,13 +887,17 @@ components:
               example: GB
 
             dateOfIssue:
+              description: The date when the driving licence was issued.
               type: string
               format: dd-mm-yyyy
               pattern: "\\d{2}-\\d{2}-\\d{4}"
               example: 01-12-2023
 
             type:
+              description: The type of driving licence, either 'photo' for a photo card licence or 'paper' for a paper licence.
               type: string
+              maxLength: 5
+              minLength: 5
               enum:
                 - photo
                 - paper
