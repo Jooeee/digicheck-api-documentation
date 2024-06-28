@@ -1062,13 +1062,15 @@ components:
               type: string
               example: Joe
               minLength: 1
-              maxLength: 30
+              maxLength: 60
+              pattern: '([A-Z]+)|([A-Z][A-Z &apos;\-]*[A-Z])'
 
             lastName:
               type: string
               example: Bloggs
               minLength: 1
-              maxLength: 30
+              maxLength: 60
+              pattern: '([A-Z]+)|([A-Z][A-Z &apos;\-]*[A-Z])'
 
         requestPayment:
           description: Set this to true to collect payment from the applicant.
