@@ -986,10 +986,45 @@ components:
                     type: object
                     properties:
                       type:
+                        description: The document type being used. Can either be primary or supporting.
+                        enum:
+                          - primary
+                          - supporting
                         type: string
 
                       document:
+                        description: The name of the document being used.
                         type: string
+                        enum:
+                          - Passport
+                          - Biometric Residence Permit
+                          - Current Driving Licence Photocard - (full or provisional)
+                          - Birth Certificate - issued within 12 months of birth
+                          - Adoption Certificate
+                          - Current driving licence photocard - (full or provisional)
+                          - Current driving licence (full or provisional) - paper version (if issued before 1998)
+                          - Birth Certificate - issued after time of birth
+                          - Marriage/Civil Partnership Certificate
+                          - Immigration Document, Visa, or Work Permit
+                          - HM Forces ID Card
+                          - Firearms Licence
+                          - Mortgage Statement
+                          - Bank or Building Society Statement
+                          - Bank or Building Society Statement
+                          - Bank or Building Society Account Opening Confirmation Letter
+                          - Credit Card Statement
+                          - Financial Statement, for example Pension or Endowment
+                          - P45 or P60 Statement
+                          - Council Tax Statement
+                          - Letter of Sponsorship from Future Employment Provider
+                          - Utility Bill
+                          - Benefit Statement, for example Child Benefit, pension
+                          - Central or local government, government agency, or local council document giving entitlement, for example from the Department for Work and Pensions, the Employment Service, HMRC
+                          - EEA National ID card
+                          - Irish Passport Card
+                          - Irish Passport CardCards Carrying the PASS Accreditation Logo
+                          - Letter from Head Teacher or College Principal
+
               example:
                 - type: "primary"
                   document: "Passport"
