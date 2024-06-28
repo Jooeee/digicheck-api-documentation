@@ -968,8 +968,12 @@ components:
           type: object
           properties:
             route:
+              description: The route being used to verify the applicants identity.
               type: integer
-              format: int32
+              enum:
+                - 1
+                - 2
+                - 3
               example: 1
 
             documents:
