@@ -758,7 +758,7 @@ components:
             - status
           properties:
             status:
-              description: Indicates if the applicant has had any other names not declared. Set this to true if the applicant has undeclared names.
+              description: Indicates if the applicant has had any other names that have yet to be declared. Set this to true if the applicant has undeclared names.
               type: boolean
 
             names:
@@ -769,6 +769,7 @@ components:
                 type: object
                 properties:
                   type:
+                    description: The type of name the applicant used. Only Forename or Surname types are accepted here.
                     type: string
                     enum:
                       - forename
@@ -776,7 +777,7 @@ components:
                     example: forename
 
                   name:
-                    description: The name used
+                    description: The name used.
                     type: string
                     minLength: 1
                     maxLength: 60
