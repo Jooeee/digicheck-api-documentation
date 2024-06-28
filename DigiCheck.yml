@@ -822,14 +822,16 @@ components:
         previousAddress:
           description: A 5 year address history is required. Please include the applicant's previous addresses here if they have any.
           type: array
+          maxItems: 200
           items:
             $ref: "#/components/schemas/previousAddress"
 
         passport:
           type: object
-          description: Indicates whether the applicant is providing passport details. Set this to true if they are.
+          description: The strucute to provide the applicant's passport details.
           properties:
             status:
+              description: Indicates whether the applicant is providing passport details. Set this to true if they are.
               type: boolean
               example: true
 
@@ -861,7 +863,7 @@ components:
               example: 30-01-2000
 
         drivingLicence:
-          description: The applicant's driving licence details.
+          description: The structure to provide the applicant's driving licence details.
           type: object
           properties:
             status:
@@ -1126,6 +1128,7 @@ components:
 
         previousAddress:
           type: array
+          maxItems: 200
           items:
             $ref: "#/components/schemas/previousAddress"
 
