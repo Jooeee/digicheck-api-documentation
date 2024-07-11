@@ -92,8 +92,8 @@ paths:
     post:
       tags:
         - application
-      summary: Submit a basic Disclosure Scotland application
-      description: Submit a basic Disclosure Scotland application
+      summary: Coming Soon - Submit a basic Disclosure Scotland application
+      description: Coming Soon - Submit a basic Disclosure Scotland application
       operationId: submitBasicDs
       requestBody:
         description: Submit a basic Disclosure Scotland application
