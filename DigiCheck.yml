@@ -114,10 +114,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/standardEnhancedDbs"
+                $ref: "#/components/schemas/comingSoon"
             application/xml:
               schema:
-                $ref: "#/components/schemas/standardEnhancedDbs"
+                $ref: "#/components/schemas/comingSoon"
         "400":
           description: Invalid ID supplied
         "404":
@@ -139,13 +139,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/standardEnhancedDbs"
+              $ref: "#/components/schemas/comingSoon"
           application/xml:
             schema:
-              $ref: "#/components/schemas/standardEnhancedDbs"
+              $ref: "#/components/schemas/comingSoon"
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/standardEnhancedDbs"
+              $ref: "#/components/schemas/comingSoon"
         required: true
       responses:
         "200":
@@ -153,10 +153,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/standardEnhancedDbs"
+                $ref: "#/components/schemas/comingSoon"
             application/xml:
               schema:
-                $ref: "#/components/schemas/standardEnhancedDbs"
+                $ref: "#/components/schemas/comingSoon"
         "400":
           description: Invalid ID supplied
         "404":
@@ -218,7 +218,7 @@ paths:
       tags:
         - application
       summary: Get the comments of an application by application reference
-      description: Write a description Dylan
+      description: Get the comments of an application by application reference
       operationId: getApplicationComments
       parameters:
         - name: applicationReference
@@ -1056,7 +1056,7 @@ components:
               minLength: 1
               maxLength: 64
               pattern: '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/'
-              example: joe@unitecompliance.co.uk
+              example: test@test.co.uk
 
             firstName:
               type: string
@@ -1329,7 +1329,7 @@ components:
             email:
               type: string
               format: email
-              example: joe@unitecompliance.co.uk
+              example: test@test.co.uk
 
             firstName:
               type: string
@@ -1936,6 +1936,12 @@ components:
         code:
           type: string
           example: "422"
+
+    comingSoon:
+      type: object
+      properties:
+        comingSoon:
+          example: Coming Soon
 
   requestBodies:
     UserArray:
