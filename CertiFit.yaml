@@ -1,1 +1,120 @@
+openapi: 3.0.0
+info:
+  title: Certifit API
+  description: API for managing candidates and bookings
+  version: 1.0.0
+servers:
+  - url: https://certifit.io/api
+    description: Production Server
+paths:
+  /candidate/add:
+    post:
+      summary: Add a new candidate
+      description: Create a new candidate entry in the system.
+      security:
+        - apiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [first_name, last_name, email, phone, job_title, onboarding_option, users, teams]
+              properties:
+                first_name:
+                  type: string
+                  example: Ali
+                last_name:
+                  type: string
+                  example: Haider
+                email:
+                  type: string
+                  format: email
+                  example: alihaider471225@gmail.com
+                phone:
+                  type: string
+                  example: "+923337039502"
+                job_title:
+                  type: string
+                  example: associate-ambulance-practitioner
+                onboarding_option:
+                  type: string
+                  example: candidate
+                users:
+                  type: array
+                  items:
+                    type: string
+                  example: ["1de18fc9-4d79-4bb5-b1b5-7844fdf08aa4"]
+                teams:
+                  type: array
+                  items:
+                    type: integer
+                  example: [2]
+      responses:
+        "201":
+          description: Candidate successfully created
+  
+  /candidate/update/{candidate-id}:
+    put:
+      summary: Update an existing candidate
+      description: Modify details of an existing candidate.
+      security:
+        - apiKeyAuth: []
+      parameters:
+        - name: candidate-id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  example: Ali
+                last_name:
+                  type: string
+                  example: Haider
+                email:
+                  type: string
+                  format: email
+                  example: ra@gmail.com
+                phone:
+                  type: string
+                  example: "+923337039502"
+                job_title:
+                  type: string
+                  example: pals
+                is_active:
+                  type: boolean
+                  example: true
+      responses:
+        "200":
+          description: Candidate successfully updated
+  
+  /candidate/delete/{candidate-id}:
+    delete:
+      summary: Delete a candidate
+      description: Remove a candidate from the system.
+      security:
+        - apiKeyAuth: []
+      parameters:
+        - name: candidate-id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Candidate successfully deleted
 
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: api-key
